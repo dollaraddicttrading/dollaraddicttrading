@@ -1,16 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>DOLLARADDICT - Trading Hub</title>
+    <meta name="description" content="DOLLARADDICT Forex Trading Hub with global trading sessions and trading tools.">
+
+    <!-- PWA configuration -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#101010">
+
+    <!-- Website styling -->
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
-    <!-- Animated Candlestick Background Canvas -->
     <canvas id="bg-canvas"></canvas>
 
     <!-- Header & Navigation -->
@@ -36,13 +44,13 @@
             <h1>Master the Markets with <span class="highlight">DOLLARADDICT</span></h1>
             <p>Real-time Forex data, global trading sessions, and direct expert connection.</p>
             <div class="hero-btns">
-                <a href="https://www.tradingview.com" target="_blank" class="btn btn-blue"><i class="fas fa-external-link-alt"></i> Open TradingView</a>
+                <a href="https://www.tradingview.com" target="_blank" rel="noopener noreferrer" class="btn btn-blue"><i class="fas fa-external-link-alt"></i> Open TradingView</a>
                 <a href="mailto:dollaraddict254@gmail.com" class="btn btn-red"><i class="fas fa-envelope"></i> Email Us Directly</a>
             </div>
         </div>
     </section>
 
-    <!-- Real-Time Forex Markets Section -->
+    <!-- Forex Markets -->
     <section id="markets" class="markets-section">
         <h2>Live Forex Market Prices</h2>
         <p class="section-subtitle">Real-time quotes updating dynamically</p>
@@ -58,13 +66,12 @@
                     </tr>
                 </thead>
                 <tbody id="forex-table-body">
-                    <!-- Populated dynamically via JS -->
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- Global Trading Clocks Section -->
+    <!-- Global Trading Clocks -->
     <section id="clocks" class="clocks-section">
         <h2>Global Trading Sessions</h2>
         <div class="clock-grid">
@@ -86,7 +93,7 @@
         </div>
     </section>
 
-    <!-- Tools & Shortcuts Section -->
+    <!-- Trading Shortcuts -->
     <section id="tools" class="tools-section">
         <h2>Quick Trading Shortcuts</h2>
         <div class="tools-container">
@@ -94,7 +101,7 @@
                 <i class="fas fa-chart-bar tool-icon"></i>
                 <h3>TradingView Terminal</h3>
                 <p>Launch the industry-standard charting and analysis tool instantly.</p>
-                <a href="https://www.tradingview.com" target="_blank" class="btn btn-blue">Launch TradingView</a>
+                <a href="https://www.tradingview.com" target="_blank" rel="noopener noreferrer" class="btn btn-blue">Launch TradingView</a>
             </div>
             <div class="tool-card">
                 <i class="fas fa-paper-plane tool-icon"></i>
@@ -126,11 +133,34 @@
     <footer>
         <p>&copy; 2026 DOLLARADDICT. All rights reserved. Built for professional traders.</p>
         <div class="social-icons">
-            <a href="mailto:dollaraddict254@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.tradingview.com" target="_blank"><i class="fas fa-chart-pie"></i></a>
+            <a href="mailto:dollaraddict254@gmail.com" aria-label="Email DOLLARADDICT"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.tradingview.com" target="_blank" rel="noopener noreferrer" aria-label="TradingView"><i class="fas fa-chart-pie"></i></a>
         </div>
     </footer>
 
+    <!-- Existing website functionality -->
     <script src="script.js"></script>
+
+    <!-- PWA service worker registration -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js")
+                    .then(registration => {
+                        console.log(
+                            "DOLLARADDICT service worker registered:",
+                            registration.scope
+                        );
+                    })
+                    .catch(error => {
+                        console.error(
+                            "DOLLARADDICT service worker registration failed:",
+                            error
+                        );
+                    });
+            });
+        }
+    </script>
+
 </body>
 </html>
